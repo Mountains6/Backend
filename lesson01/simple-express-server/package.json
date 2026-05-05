@@ -1,0 +1,17 @@
+{
+  "name": "simple-express-server",
+  "version": "1.0.0",
+  "description": "npm init -y - инициализирует проект. -y - нужен, чтобы были добавлены настройки по умолчанию.\r Команда так же нужна, чтобы мы могли устанавливать библиотеки. Изпользуется 1 раз в начале",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
