@@ -1,6 +1,6 @@
 import express from "express";
 import postsRouter from "./modules/post/routes/posts.routes";
-import todoRouter from "./modules/todos/routes/todos.routes";
+import todoRouter from "./modules/homework03/todos/routes/todos.routes";
 
 const app = express();
 
