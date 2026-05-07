@@ -5,9 +5,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
-app.use(express_1.default.json);
+app.use(express_1.default.json());
 app.get("/", (_req, res) => {
-    res.json({ message: "Hello, world!" });
+    res.status(200).json({ message: "Hello, world!" });
+});
+app.get("/old-path", (_req, res) => {
+    res.redirect(302, "/new-path");
+});
+app.get("/new-path", (_req, res) => {
+    res.status(200).json({ message: "Welcome" });
 });
 const PORT = 3000;
 app.listen(PORT, () => {
