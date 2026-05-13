@@ -11,6 +11,6 @@ app.get("/health", (_req, res) => {
 });
 
 app.use("/posts", postsRouter);
-app.use("/todos", buildTodoRouter);
+app.use("/todos", buildTodoRouter());
 
 export default app;
