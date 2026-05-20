@@ -1,5 +1,9 @@
-import { LoginDto, loginDto, registerDto, RegisterDto } from "./user.request.dto";
-import { LoginResponseDto } from "./user.response.dto";
+import {
+  LoginDto,
+  loginDto,
+  registerDto,
+  RegisterDto,
+} from "./user.request.dto";
 import UserService from "./user.service";
 import { NextFunction, Request, Response } from "express";
 
@@ -7,9 +11,8 @@ export class UserController {
   constructor(private readonly service: UserService) {}
 
   register = async (req: Request, res: Response, next: NextFunction) => {
-    
     try {
-      const data: RegisterDto = registerDto.parse(req.body)
+      const data: RegisterDto = registerDto.parse(req.body);
       const result = await this.service.register(data);
       res.status(201).json(result);
     } catch (error) {

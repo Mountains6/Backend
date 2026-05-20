@@ -2,7 +2,6 @@ import { db } from "../../db";
 import { todos } from "../../db/schema";
 import { Todo, TodoRepository } from "./todo.entity";
 
-// Drizzle
 export class DrizzleRepository implements TodoRepository {
   async findAll(): Promise<Todo[]> {
     return await db.select().from(todos);
@@ -18,5 +17,3 @@ export class DrizzleRepository implements TodoRepository {
     return todo;
   }
 }
-
-// findAll, create, update, findById, delete

@@ -1,23 +1,18 @@
-import { Todo, TodoRepository } from "./todo.entity";
-
-// Business logic
-// DO NOT work here with express req res
+import { TodoRepository } from "./todo.entity";
+import toTodoResponse from "./todo.mapper";
+import { CreateTodoDto } from "./todo.request.dto";
+import { TodoResponseDto } from "./todo.response.dto";
 
 export class TodoService {
-  constructor(private readonly repo: TodoRepository) {
-    this.repo = repo;
+  constructor(private readonly repo: TodoRepository) {}
+
+  async getAll(): Promise<TodoResponseDto[]> {
+    const todos = await this.repo.findAll();
+    return todos.map(toTodoResponse);
   }
 
-  getAll(): Promise<Todo[]> {
-    return this.repo.findAll();
-  }
-
-  create(title: string) {
-    if (!title) {
-      throw new Error("Title is required");
-    }
-
-    return this.repo.create(title);
+  async create(dto: CreateTodoDto): Promise<TodoResponseDto> {
+    const todo = await this.repo.create(dto.title);
+    return toTodoResponse(todo);
   }
 }
-

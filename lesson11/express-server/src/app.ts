@@ -6,7 +6,7 @@ import { buildTodoRouter } from "./modules/todos/todo.container";
 import { customLogger } from "./middleware/custom-logger";
 import { logger } from "./lib/logger";
 import { privateGuard } from "./middleware/private-guard";
-import { buildUserRouter } from "./modules/users/user.containers";
+import { buildUserRouter } from "./modules/users/user.container";
 import { errorHandler } from "./middleware/error.middleware";
 
 const app = express();

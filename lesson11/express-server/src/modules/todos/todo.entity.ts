@@ -5,7 +5,6 @@ export interface Todo {
   createdAt: Date;
 }
 
-// Interface for repository
 export interface TodoRepository {
   findAll(): Promise<Todo[]>;
   create(title: string): Promise<Todo>;
