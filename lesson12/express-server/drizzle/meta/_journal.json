@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1778698447747,
+      "tag": "0000_strange_killer_shrike",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1779207915198,
+      "tag": "0001_perpetual_nomad",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1779298135968,
+      "tag": "0002_amazing_cargill",
+      "breakpoints": true
+    }
+  ]
+}

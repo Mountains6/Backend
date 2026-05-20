@@ -1,0 +1,59 @@
+import {
+  LoginDto,
+  loginDto,
+  registerDto,
+  RegisterDto,
+} from "./user.request.dto";
+import UserService from "./user.service";
+import { NextFunction, Request, Response } from "express";
+
+export class UserController {
+  constructor(private readonly service: UserService) {}
+
+  register = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const data: RegisterDto = registerDto.parse(req.body);
+      const result = await this.service.register(data);
+      res.status(201).json(result);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  login = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const data: LoginDto = loginDto.parse(req.body);
+      const result = await this.service.login(data);
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  currentUser = async (req: Request, res: Response) => {
+    if (!req.currentUser) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    res.status(200).json({ user: req.currentUser });
+  };
+
+  async profile(req: Request, res: Response, next: NextFunction) {
+    try {
+      const user = req.currentUser;
+      if (!user) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      res.json({
+        message: "Profile page",
+        user: {
+          id: user.id,
+          email: user.email,
+          createdAt: user.createdAt,
+        },
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+}
