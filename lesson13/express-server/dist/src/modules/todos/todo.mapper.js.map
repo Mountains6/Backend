@@ -1,0 +1,1 @@
+{"version":3,"file":"todo.mapper.js","sourceRoot":"","sources":["../../../../src/modules/todos/todo.mapper.ts"],"names":[],"mappings":";;AAGA,iCAOC;AAPD,SAAwB,cAAc,CAAC,IAAU;IAC/C,OAAO;QACL,EAAE,EAAE,IAAI,CAAC,EAAE;QACX,KAAK,EAAE,IAAI,CAAC,KAAK;QACjB,IAAI,EAAE,IAAI,CAAC,IAAI;QACf,SAAS,EAAE,IAAI,CAAC,SAAS,CAAC,WAAW,EAAE;KACxC,CAAC;AACJ,CAAC"}
