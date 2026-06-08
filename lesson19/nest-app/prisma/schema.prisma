@@ -1,0 +1,33 @@
+generator client {
+    provider     = "prisma-client"
+    output       = "../generated/prisma"
+    moduleFormat = "cjs"
+}
+
+datasource db {
+    provider = "postgresql"
+}
+
+model Car {
+    id         Int      @id @default(autoincrement())
+    brand      String
+    model      String
+    year       Int
+    price      Decimal
+    updatedAt  DateTime @default(now()) @updatedAt @map("updated_at")
+    createddAt DateTime @default(now()) @map("created_at")
+
+    @@map("cars")
+}
+
+model Book {
+    id            Int      @id @default(autoincrement())
+    title         String
+    author        String
+    publishedYear Int
+    price         Decimal
+    updatedAt     DateTime @default(now()) @updatedAt @map("updated_at")
+    createdAt     DateTime @default(now()) @map("created_at")
+
+    @@map("books")
+}

@@ -1,0 +1,18 @@
+volumes:
+  postgres:
+services:
+  postgres:
+    container_name: nest-app-db
+    labels:
+      org.springframework.boot.service-connection: postgres
+    image: "postgres:17"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "Qwerty007"
+      PGDATA: "/data/postgres"
+    volumes:
+      - postgres:/data/postgres
+      - ./db/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
