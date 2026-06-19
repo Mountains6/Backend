@@ -10,7 +10,6 @@ export function errorHandler(
   res: Response,
   _next: NextFunction,
 ) {
-  // Domain Errors
   if (error instanceof UserAlreadyExistsError) {
     res.status(400).json({ error: error.message });
   }
@@ -18,23 +17,20 @@ export function errorHandler(
   if (error instanceof InvalidCredentialsError) {
     res.status(400).json({ error: error.message });
   }
-  // Zod errors (validations)
+
   if (error instanceof ZodError) {
     return res
       .status(400)
       .json({ error: "Validation error", details: z.treeifyError(error) });
   }
 
-  // DB errors
   if (error instanceof DatabaseError) {
     return handleDbError(error, res);
   }
 
-  // fallback
   return res.status(500).json({ error: "Internal Server Error" });
 }
 
-// ___ Helper function for db errors
 function handleDbError(error: DatabaseError, res: Response) {
   logger.info("**** DB Errors *****");
 
